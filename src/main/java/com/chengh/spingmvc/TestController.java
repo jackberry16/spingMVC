@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("test")
 public class TestController {
     @GetMapping("1")
-    public String getParam(){
+    public String getParam(@TestAnnotation(value = "s") String s){
+        System.out.println(s);
         return "success";
     }
 }
