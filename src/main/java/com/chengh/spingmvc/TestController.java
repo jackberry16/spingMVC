@@ -45,4 +45,12 @@ public class TestController {
         System.out.println("JSESSIONID:" + a);
         return "success";
     }
+
+    @GetMapping("6")
+    public String testException() {
+        if (1 != 2) {
+            throw new RuntimeException();
+        }
+        return "success";
+    }
 }
