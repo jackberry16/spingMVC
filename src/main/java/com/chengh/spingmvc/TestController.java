@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("test")
 public class TestController {
     @GetMapping("1")
-    public String getParam1(@TestAnnotation(value = "s") String s) {
+    public String getParam1(@TestAnnotation(value = "s") String s,
+                            @Test2Annotation String a) {
         System.out.println("参数为:" + s);
+        System.out.println("参数为:" + a);
         return "success";
     }
 
@@ -51,6 +53,13 @@ public class TestController {
         if (1 != 2) {
             throw new RuntimeException();
         }
+        return "success";
+    }
+
+    //@PathVariable 将占位符中数据赋值给控制器方法参数
+    @GetMapping("7/{id}/{username}")
+    public String test4(@PathVariable("id") long id,
+                        @PathVariable String username) {
         return "success";
     }
 }

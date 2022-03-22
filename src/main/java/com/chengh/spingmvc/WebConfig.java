@@ -12,5 +12,6 @@ public class WebConfig implements WebMvcConfigurer {
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         //注册自定义解析器
         resolvers.add(new TestResolver());
+        resolvers.add(new Test2Resolver());
     }
 }
