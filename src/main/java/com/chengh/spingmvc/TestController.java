@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("test")
+//@SessionAttributes(value = {"test1"})
 public class TestController {
     @GetMapping("1")
     public String getParam1(@TestAnnotation(value = "s") String s,
@@ -62,4 +63,23 @@ public class TestController {
                         @PathVariable String username) {
         return "success";
     }
+
+    @ModelAttribute("test1")
+    public String getModel() {
+        return "test1的信息";
+    }
+
+    @GetMapping("8")
+    public String test5(@ModelAttribute("test1") String a, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String s = (String) session.getAttribute("test1");
+        return a + s;
+    }
+
+    @PostMapping("9")
+    public TestEntity test6(@RequestBody TestEntity testEntity) {
+        System.out.println(testEntity);
+        return testEntity;
+    }
+
 }
