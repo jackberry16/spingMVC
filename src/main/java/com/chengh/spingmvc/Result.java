@@ -1,5 +1,7 @@
 package com.chengh.spingmvc;
 
+import org.springframework.http.HttpStatus;
+
 /**
  * 返回类
  */
@@ -13,7 +15,6 @@ public class Result {
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
     }
-
     /**
      * 生成一个ApiResult对象, 并返回
      *

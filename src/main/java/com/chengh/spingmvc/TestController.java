@@ -77,7 +77,7 @@ public class TestController {
     }
 
     @PostMapping("9")
-    public TestEntity test6(@RequestBody TestEntity testEntity) {
+    public TestEntity test6(@RequestBody(required = false) TestEntity testEntity) {
         System.out.println(testEntity);
         return testEntity;
     }
