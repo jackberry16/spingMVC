@@ -1,10 +1,10 @@
 package com.chengh.spingmvc;
 
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 @RestController
 @RequestMapping("test")
 //@SessionAttributes(value = {"test1"})
@@ -81,5 +81,23 @@ public class TestController {
         System.out.println(testEntity);
         return testEntity;
     }
+
+    @InitBinder("user")
+    public void initBinderUser(WebDataBinder webDataBinder){
+        webDataBinder.setFieldDefaultPrefix("user.");
+    }
+
+    @InitBinder("addr")
+    public void initBinderAddr(WebDataBinder webDataBinder){
+        webDataBinder.setFieldDefaultPrefix("addr.");
+    }
+
+    @PostMapping("10")
+    public void test7(@ModelAttribute("user")User user,@ModelAttribute("addr")Addr addr){
+        System.out.println(user);
+        System.out.println(addr);
+    }
+
+
 
 }
